@@ -90,7 +90,23 @@ fun AppNavigation(
         }
 
         composable(Routes.Paywall.route) {
-            PaywallScreen()
+            val isTrialEligible by subscriptionRepository.isFreeTrialEligible
+                .collectAsStateWithLifecycle(initialValue = true)
+
+            PaywallScreen(
+                isFreeTrialEligible = isTrialEligible,
+                onClose = { navController.popBackStack() },
+                onConfirmPurchase = {
+                    scope.launch {
+                        subscriptionRepository.activateSubscription()
+                        analytics.track(
+                            "subscription_purchased",
+                            mapOf("price" to if (isTrialEligible) "1" else "249")
+                        )
+                        navController.popBackStack()
+                    }
+                }
+            )
         }
     }
 }

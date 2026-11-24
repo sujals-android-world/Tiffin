@@ -10,13 +10,18 @@ import kotlinx.coroutines.flow.map
 
 private val Context.dataStore by preferencesDataStore(name = "tiffin_prefs")
 
-class SubscriptionPreferences(private val context: Context) {
+class UserPreferences(private val context: Context) {
 
     private val isSubscribedKey = booleanPreferencesKey("is_subscribed")
+    private val isFreeTrialEligibleKey = booleanPreferencesKey("is_free_trial_eligible")
     private val launchCountKey = intPreferencesKey("launch_count")
 
     val isSubscribed: Flow<Boolean> = context.dataStore.data.map { prefs ->
         prefs[isSubscribedKey] ?: false
+    }
+
+    val isFreeTrialEligible: Flow<Boolean> = context.dataStore.data.map { prefs ->
+        prefs[isFreeTrialEligibleKey] ?: true
     }
 
     val launchCount: Flow<Int> = context.dataStore.data.map { prefs ->
@@ -30,9 +35,10 @@ class SubscriptionPreferences(private val context: Context) {
         }
     }
 
-    suspend fun setSubscribed(subscribed: Boolean) {
+    suspend fun activateSubscription() {
         context.dataStore.edit { prefs ->
-            prefs[isSubscribedKey] = subscribed
+            prefs[isSubscribedKey] = true
+            prefs[isFreeTrialEligibleKey] = false
         }
     }
 }

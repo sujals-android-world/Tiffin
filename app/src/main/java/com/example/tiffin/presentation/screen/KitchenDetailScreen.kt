@@ -149,7 +149,6 @@ fun KitchenDetailScreen(
                     contentPadding = PaddingValues(16.dp),
                     verticalArrangement = Arrangement.spacedBy(14.dp)
                 ) {
-                    // 1. Kitchen Summary Card
                     item {
                         ElevatedCard(
                             shape = RoundedCornerShape(18.dp),
@@ -250,7 +249,6 @@ fun KitchenDetailScreen(
                         }
                     }
 
-                    // 2. Delivery Slots Section
                     item {
                         Column {
                             Row(
@@ -321,7 +319,6 @@ fun KitchenDetailScreen(
                         }
                     }
 
-                    // 3. Weekly Menu Section Header
                     item {
                         Row(
                             modifier = Modifier.fillMaxWidth(),
@@ -363,47 +360,63 @@ fun KitchenDetailScreen(
                         }
                     }
 
-                    // 4. Day-by-Day Menu Cards
                     items(menuEntries) { (day, meal) ->
                         val isToday = day.equals(state.todayDay, ignoreCase = true)
                         val isUnlocked = state.isPremium || isToday
+                        val accentOrange = Color(0xFFE65100)
 
-                        ElevatedCard(
+                        Surface(
                             shape = RoundedCornerShape(14.dp),
-                            colors = CardDefaults.elevatedCardColors(
-                                containerColor = if (isToday) {
-                                    MaterialTheme.colorScheme.primaryContainer.copy(alpha = 0.35f)
-                                } else {
-                                    MaterialTheme.colorScheme.surfaceContainerLow
-                                }
-                            )
+                            color = MaterialTheme.colorScheme.surfaceContainerLow,
+                            border = if (isToday) {
+                                BorderStroke(1.2.dp, accentOrange.copy(alpha = 0.55f))
+                            } else {
+                                BorderStroke(0.5.dp, MaterialTheme.colorScheme.outlineVariant.copy(alpha = 0.35f))
+                            },
+                            modifier = Modifier.fillMaxWidth()
                         ) {
                             Row(
                                 modifier = Modifier
                                     .fillMaxWidth()
-                                    .padding(14.dp),
+                                    .padding(horizontal = 14.dp, vertical = 13.dp),
                                 horizontalArrangement = Arrangement.SpaceBetween,
                                 verticalAlignment = Alignment.CenterVertically
                             ) {
+                                // Left thin accent bar only for TODAY
+                                if (isToday) {
+                                    Box(
+                                        modifier = Modifier
+                                            .width(4.dp)
+                                            .height(38.dp)
+                                            .background(accentOrange, RoundedCornerShape(4.dp))
+                                    )
+                                    Spacer(modifier = Modifier.width(12.dp))
+                                }
+
                                 Column(modifier = Modifier.weight(1f)) {
                                     Row(verticalAlignment = Alignment.CenterVertically) {
                                         Text(
                                             text = day,
                                             style = MaterialTheme.typography.titleSmall,
-                                            fontWeight = FontWeight.Bold
+                                            fontWeight = FontWeight.Bold,
+                                            color = if (isUnlocked) {
+                                                MaterialTheme.colorScheme.onSurface
+                                            } else {
+                                                MaterialTheme.colorScheme.onSurfaceVariant
+                                            }
                                         )
                                         if (isToday) {
                                             Spacer(modifier = Modifier.width(8.dp))
                                             Surface(
                                                 shape = RoundedCornerShape(6.dp),
-                                                color = MaterialTheme.colorScheme.primary
+                                                color = accentOrange.copy(alpha = 0.14f)
                                             ) {
                                                 Text(
                                                     text = "TODAY",
                                                     style = MaterialTheme.typography.labelSmall,
                                                     fontWeight = FontWeight.Bold,
-                                                    color = MaterialTheme.colorScheme.onPrimary,
-                                                    modifier = Modifier.padding(horizontal = 6.dp, vertical = 2.dp)
+                                                    color = accentOrange,
+                                                    modifier = Modifier.padding(horizontal = 7.dp, vertical = 2.dp)
                                                 )
                                             }
                                         }
@@ -415,21 +428,29 @@ fun KitchenDetailScreen(
                                         text = if (isUnlocked) meal else "Locked • Subscribe to view full week menu",
                                         style = MaterialTheme.typography.bodyMedium,
                                         color = if (isUnlocked) {
-                                            MaterialTheme.colorScheme.onSurface
+                                            MaterialTheme.colorScheme.onSurface.copy(alpha = 0.85f)
                                         } else {
-                                            MaterialTheme.colorScheme.onSurfaceVariant
+                                            MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.7f)
                                         }
                                     )
                                 }
 
                                 if (!isUnlocked) {
                                     Spacer(modifier = Modifier.width(8.dp))
-                                    Icon(
-                                        imageVector = Icons.Rounded.Lock,
-                                        contentDescription = "Locked",
-                                        tint = MaterialTheme.colorScheme.onSurfaceVariant,
-                                        modifier = Modifier.size(18.dp)
-                                    )
+                                    Surface(
+                                        shape = CircleShape,
+                                        color = MaterialTheme.colorScheme.surfaceContainerHighest,
+                                        modifier = Modifier.size(30.dp)
+                                    ) {
+                                        Box(contentAlignment = Alignment.Center) {
+                                            Icon(
+                                                imageVector = Icons.Rounded.Lock,
+                                                contentDescription = "Locked",
+                                                tint = MaterialTheme.colorScheme.onSurfaceVariant,
+                                                modifier = Modifier.size(15.dp)
+                                            )
+                                        }
+                                    }
                                 }
                             }
                         }
