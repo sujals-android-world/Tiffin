@@ -5,3 +5,11 @@ data class KitchenListUiState(
     val kitchens: List<Kitchen> = emptyList(),
     val error: String? = null
 )
+
+data class KitchenDetailUiState(
+    val isLoading: Boolean = true,
+    val kitchen: Kitchen? = null,
+    val isPremium: Boolean = false,
+    val todayDay: String = "",
+    val error: String? = null
+)
