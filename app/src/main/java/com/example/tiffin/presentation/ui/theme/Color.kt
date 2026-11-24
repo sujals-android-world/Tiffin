@@ -1,4 +1,4 @@
-package com.example.tiffin.ui.theme
+package com.example.tiffin.presentation.ui.theme
 
 import androidx.compose.ui.graphics.Color
 

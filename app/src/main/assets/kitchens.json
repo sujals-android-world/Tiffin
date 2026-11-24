@@ -1,0 +1,218 @@
+[
+  {
+    "id": "k1",
+    "name": "Annapurna Ghar Ki Rasoi",
+    "cuisine": "Gujarati Home Style",
+    "pricePerTiffin": 85,
+    "isVeg": true,
+    "rating": 4.8,
+    "deliverySlots": ["12:15 PM - 1:00 PM", "7:45 PM - 8:30 PM"],
+    "weeklyMenu": {
+      "Monday": "Sev Tameta, 4 Phulka Roti, Dal-Bhat, Chaas",
+      "Tuesday": "Bhindi Masala, Bajra Rotla, Kadhi-Khichdi",
+      "Wednesday": "Paneer Butter Masala, 4 Ghee Roti, Jeera Rice",
+      "Thursday": "Aloo Matar, 4 Phulka Roti, Gujarati Dal, Papad",
+      "Friday": "Baingan Bharta, 3 Bhakri, Dal Fry, Salad",
+      "Saturday": "Chole Puri, Masala Chaas, Moong Dal Halwa",
+      "Sunday": "Undhiyu, 4 Puri, Shrikhand, Masala Khichdi"
+    }
+  },
+  {
+    "id": "k2",
+    "name": "Sharma Ji Ka Dabba",
+    "cuisine": "North Indian Thali",
+    "pricePerTiffin": 95,
+    "isVeg": true,
+    "rating": 4.6,
+    "deliverySlots": ["12:30 PM - 1:15 PM", "8:00 PM - 8:45 PM"],
+    "weeklyMenu": {
+      "Monday": "Rajma Masala, 4 Tawa Roti, Steamed Rice, Raita",
+      "Tuesday": "Aloo Gobhi, 4 Tawa Roti, Dal Tadka, Salad",
+      "Wednesday": "Kadhai Paneer, 4 Butter Roti, Jeera Rice",
+      "Thursday": "Kadi Pakora, 4 Tawa Roti, Jeera Aloo, Rice",
+      "Friday": "Dal Makhani, 4 Tawa Roti, Matar Pulao",
+      "Saturday": "Chole Bhature, Boondi Raita, Pickle",
+      "Sunday": "Shahi Paneer, 4 Tawa Roti, Veg Biryani, Gulab Jamun"
+    }
+  },
+  {
+    "id": "k3",
+    "name": "Malabar Spice Kitchen",
+    "cuisine": "Kerala & Coastal",
+    "pricePerTiffin": 120,
+    "isVeg": false,
+    "rating": 4.7,
+    "deliverySlots": ["12:30 PM - 1:15 PM", "8:00 PM - 8:45 PM"],
+    "weeklyMenu": {
+      "Monday": "Chicken Stew, 3 Appam, Matta Rice, Thoran",
+      "Tuesday": "Fish Curry, Steamed Rice, Avial, Buttermilk",
+      "Wednesday": "Pepper Chicken, 3 Malabar Parotta, Dal",
+      "Thursday": "Egg Roast, 3 Appam, Cabbage Thoran, Rice",
+      "Friday": "Nadan Chicken Curry, Matta Rice, Pachadi",
+      "Saturday": "Prawn Masala, 3 Chapati, Steamed Rice",
+      "Sunday": "Malabar Chicken Biryani, Raita, Pickle"
+    }
+  },
+  {
+    "id": "k4",
+    "name": "Amma's South Tiffin",
+    "cuisine": "Udupi & Tamil",
+    "pricePerTiffin": 80,
+    "isVeg": true,
+    "rating": 4.9,
+    "deliverySlots": ["12:00 PM - 12:45 PM", "7:30 PM - 8:15 PM"],
+    "weeklyMenu": {
+      "Monday": "Sambar Rice, Curd Rice, Beans Poriyal, Papad",
+      "Tuesday": "3 Masala Dosa, Coconut Chutney, Sambar",
+      "Wednesday": "Lemon Rice, Rasam, Potato Podimas, Curd",
+      "Thursday": "4 Idli, 2 Medu Vada, Sambar, Kara Chutney",
+      "Friday": "Bisi Bele Bath, Boondi Raita, Papad",
+      "Saturday": "3 Rava Dosa, Sambar, Tomato Chutney",
+      "Sunday": "Mini South Meals: Rice, Sambar, Rasam, Payasam"
+    }
+  },
+  {
+    "id": "k5",
+    "name": "Punjabi Tadka Tiffins",
+    "cuisine": "Homestyle Punjabi",
+    "pricePerTiffin": 110,
+    "isVeg": false,
+    "rating": 4.5,
+    "deliverySlots": ["12:45 PM - 1:30 PM", "8:15 PM - 9:00 PM"],
+    "weeklyMenu": {
+      "Monday": "Home Chicken Curry, 4 Roti, Jeera Rice, Onion",
+      "Tuesday": "Egg Curry, 4 Roti, Dal Tadka, Rice",
+      "Wednesday": "Butter Chicken, 4 Butter Roti, Pulao",
+      "Thursday": "Keema Matar, 4 Roti, Boondi Raita",
+      "Friday": "Chicken Masala, 4 Roti, Steamed Rice",
+      "Saturday": "Tandoori Chicken (2 pc), 3 Roti, Dal",
+      "Sunday": "Punjabi Chicken Biryani, Raita, Salad"
+    }
+  },
+  {
+    "id": "k6",
+    "name": "Aai's Kolhapuri Dabba",
+    "cuisine": "Maharashtrian",
+    "pricePerTiffin": 90,
+    "isVeg": true,
+    "rating": 4.6,
+    "deliverySlots": ["12:15 PM - 1:00 PM", "7:45 PM - 8:30 PM"],
+    "weeklyMenu": {
+      "Monday": "Pithla Bhakri, Thecha, Varan Bhaat",
+      "Tuesday": "Matki Usal, 4 Chapati, Dal Rice, Koshimbir",
+      "Wednesday": "Bharli Vangi, 3 Jowar Bhakri, Kadhi",
+      "Thursday": "Zunka, 4 Chapati, Masoor Amti, Rice",
+      "Friday": "Batata Bhaji, 4 Puri, Shrikhand, Rice",
+      "Saturday": "Misal Pav (3 Pav), Mattha, Farsan",
+      "Sunday": "Puran Poli (2 pc), Katachi Amti, Rice"
+    }
+  },
+  {
+    "id": "k7",
+    "name": "Bong Homely Meals",
+    "cuisine": "Bengali Home Kitchen",
+    "pricePerTiffin": 115,
+    "isVeg": false,
+    "rating": 4.7,
+    "deliverySlots": ["12:30 PM - 1:15 PM", "8:00 PM - 8:45 PM"],
+    "weeklyMenu": {
+      "Monday": "Rohu Fish Jhol, Steamed Rice, Musur Dal, Aloo Bhaja",
+      "Tuesday": "Dimer Dalna (Egg), Rice, Begun Bhaja, Dal",
+      "Wednesday": "Kosha Chicken, 4 Roti, Steamed Rice",
+      "Thursday": "Shorshe Maach, Steamed Rice, Moong Dal",
+      "Friday": "Chicken Curry, Rice, Chutney, Papad",
+      "Saturday": "Luchi (5 pc), Aloor Dum, Mishti Doi",
+      "Sunday": "Mutton Dakbunglow, Basanti Pulao, Salad"
+    }
+  },
+  {
+    "id": "k8",
+    "name": "Sattvik Bhojan Ghar",
+    "cuisine": "Jain & No Onion-Garlic",
+    "pricePerTiffin": 95,
+    "isVeg": true,
+    "rating": 4.8,
+    "deliverySlots": ["12:00 PM - 12:45 PM", "7:15 PM - 8:00 PM"],
+    "weeklyMenu": {
+      "Monday": "Paneer Bhurji, 4 Ghee Roti, Dal, Rice",
+      "Tuesday": "Gatte Ki Sabzi, 4 Roti, Moong Dal Khichdi",
+      "Wednesday": "Malai Kofta, 4 Roti, Jeera Rice, Chaas",
+      "Thursday": "Tindora Sabzi, 4 Roti, Gujarati Kadhi, Rice",
+      "Friday": "Chana Masala, 4 Roti, Dal Fry, Rice",
+      "Saturday": "Dahi Bhindi, 3 Bajra Rotla, Khichdi",
+      "Sunday": "Jain Pav Bhaji, Pulao, Chaas"
+    }
+  },
+  {
+    "id": "k9",
+    "name": "FitBowl Protein Tiffins",
+    "cuisine": "High-Protein Balanced",
+    "pricePerTiffin": 135,
+    "isVeg": false,
+    "rating": 4.9,
+    "deliverySlots": ["12:30 PM - 1:15 PM", "7:45 PM - 8:30 PM"],
+    "weeklyMenu": {
+      "Monday": "Grilled Chicken Breast, Brown Rice, Sauteed Veggies",
+      "Tuesday": "4 Egg White Bhurji, 3 Multigrain Roti, Dal",
+      "Wednesday": "Peri-Peri Chicken, Quinoa Salad, Soup",
+      "Thursday": "Soya & Chicken Keema, 3 Multigrain Roti, Curd",
+      "Friday": "Herb Chicken, Mashed Sweet Potato, Broccoli",
+      "Saturday": "Chicken Tikka Bowl, Mint Chutney, Brown Rice",
+      "Sunday": "Roasted Chicken, 3 Roti, Dal Tadka, Salad"
+    }
+  },
+  {
+    "id": "k10",
+    "name": "Rajasthani Rasoi",
+    "cuisine": "Marwari Home Style",
+    "pricePerTiffin": 100,
+    "isVeg": true,
+    "rating": 4.4,
+    "deliverySlots": ["12:30 PM - 1:15 PM", "8:00 PM - 8:45 PM"],
+    "weeklyMenu": {
+      "Monday": "Dal Baati (2 pc), Churma, Garlic Chutney",
+      "Tuesday": "Ker Sangri, 4 Ghee Roti, Kadhi, Rice",
+      "Wednesday": "Besan Gatta, 4 Roti, Dal, Jeera Rice",
+      "Thursday": "Sev Tamatar, 3 Missi Roti, Chaas",
+      "Friday": "Aloo Pyaz Sabzi, 4 Roti, Moong Dal",
+      "Saturday": "Papad Mangodi, 4 Roti, Khichdi, Kadhi",
+      "Sunday": "Special Rajasthani Thali, Churma Ladoo"
+    }
+  },
+  {
+    "id": "k11",
+    "name": "Hyderabadi Dastarkhwan",
+    "cuisine": "Deccani Home Kitchen",
+    "pricePerTiffin": 125,
+    "isVeg": false,
+    "rating": 4.7,
+    "deliverySlots": ["12:45 PM - 1:30 PM", "8:15 PM - 9:00 PM"],
+    "weeklyMenu": {
+      "Monday": "Dum Ka Murgh, 4 Rumali Roti, Steamed Rice",
+      "Tuesday": "Egg Masala, Khatti Dal, Rice, Papad",
+      "Wednesday": "Hyderabadi Chicken Biryani, Mirchi Ka Salan, Raita",
+      "Thursday": "Chicken Do Pyaza, 4 Chapati, Dal",
+      "Friday": "Mutton Kheema, 4 Chapati, Baghara Rice",
+      "Saturday": "Chicken 65, Dalcha, Baghara Khana",
+      "Sunday": "Special Nizami Chicken Dum Biryani, Double Ka Meetha"
+    }
+  },
+  {
+    "id": "k12",
+    "name": "Student Budget Dabba",
+    "cuisine": "Everyday Homestyle",
+    "pricePerTiffin": 65,
+    "isVeg": true,
+    "rating": 4.3,
+    "deliverySlots": ["12:15 PM - 1:00 PM", "7:45 PM - 8:30 PM"],
+    "weeklyMenu": {
+      "Monday": "Aloo Matar, 4 Roti, Dal, Rice",
+      "Tuesday": "Chana Dal, 4 Roti, Jeera Aloo, Rice",
+      "Wednesday": "Matar Paneer, 4 Roti, Rice, Salad",
+      "Thursday": "Kadhi Pakora, Rice, 3 Roti, Papad",
+      "Friday": "Mix Veg, 4 Roti, Dal Tadka, Rice",
+      "Saturday": "Rajma Chawal, 2 Roti, Onion Salad",
+      "Sunday": "Veg Pulao, Boondi Raita, Gulab Jamun"
+    }
+  }
+]
