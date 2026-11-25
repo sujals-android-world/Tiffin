@@ -1,3 +1,5 @@
+
+https://github.com/user-attachments/assets/67b8d55e-bb8f-4b2b-8df3-33b06fcf17f4
 # Tiffin (Android Developer Intern Assignment)
 
 A single-module Kotlin and Jetpack Compose Android app (`minSdk 24`) for discovering nearby home kitchens, previewing daily and weekly tiffin menus, and unlocking full access through a persisted ₹1 trial, then ₹249/month, subscription flow (purchase is faked).
@@ -204,3 +206,9 @@ I used Claude, Gemini and Android Studio AI for planning, the ViewModel and UI s
 ### What I wrote by hand because directing an agent was slower
 
 Wiring the Navigation Compose routes, fine-tuning the dp padding and the side-by-side delivery slot alignment on `KitchenDetailScreen`, and adjusting the 24-hour renewal date formatting directly in Kotlin. Each was under a minute by hand, versus writing multi-line UI prompts.
+
+---
+
+## 🎥 Demo
+
+Uploading Tiffen Video.mp4…
