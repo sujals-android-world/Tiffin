@@ -2,6 +2,7 @@ package com.example.tiffin.presentation.screen
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -21,8 +22,11 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.BasicTextField
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.AccessTime
+import androidx.compose.material.icons.rounded.Close
 import androidx.compose.material.icons.rounded.RestaurantMenu
 import androidx.compose.material.icons.rounded.Star
 import androidx.compose.material3.CardDefaults
@@ -38,11 +42,18 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import com.example.tiffin.domain.Kitchen
 import com.example.tiffin.domain.KitchenListUiState
@@ -53,6 +64,17 @@ fun KitchenListScreen(
     state: KitchenListUiState,
     onKitchenClick: (String) -> Unit
 ) {
+    var budgetInput by rememberSaveable { mutableStateOf("") }
+    val maxBudget = budgetInput.toIntOrNull()
+
+    val filteredKitchens = remember(state.kitchens, maxBudget) {
+        if (maxBudget == null) {
+            state.kitchens
+        } else {
+            state.kitchens.filter { it.pricePerTiffin <= maxBudget }
+        }
+    }
+
     Scaffold(
         containerColor = MaterialTheme.colorScheme.background,
         topBar = {
@@ -66,11 +88,21 @@ fun KitchenListScreen(
                             color = MaterialTheme.colorScheme.onSurface
                         )
                         Text(
-                            text = "Fresh homemade meals near you",
+                            text = "Fresh testy meals near you",
                             style = MaterialTheme.typography.bodySmall,
                             color = MaterialTheme.colorScheme.onSurfaceVariant
                         )
                     }
+                },
+                actions = {
+                    CompactBudgetInput(
+                        budgetInput = budgetInput,
+                        onBudgetChange = { input ->
+                            budgetInput = input.filter { it.isDigit() }.take(4)
+                        },
+                        onClear = { budgetInput = "" },
+                        modifier = Modifier.padding(end = 12.dp)
+                    )
                 },
                 colors = TopAppBarDefaults.topAppBarColors(
                     containerColor = MaterialTheme.colorScheme.background
@@ -106,6 +138,22 @@ fun KitchenListScreen(
                 }
             }
 
+            filteredKitchens.isEmpty() -> {
+                Box(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .padding(innerPadding)
+                        .padding(24.dp),
+                    contentAlignment = Alignment.Center
+                ) {
+                    Text(
+                        text = "No kitchens under ₹$maxBudget",
+                        style = MaterialTheme.typography.bodyLarge,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                    )
+                }
+            }
+
             else -> {
                 LazyColumn(
                     modifier = Modifier
@@ -115,7 +163,7 @@ fun KitchenListScreen(
                     verticalArrangement = Arrangement.spacedBy(14.dp)
                 ) {
                     items(
-                        items = state.kitchens,
+                        items = filteredKitchens,
                         key = { it.id }
                     ) { kitchen ->
                         KitchenCard(
@@ -124,6 +172,85 @@ fun KitchenListScreen(
                         )
                     }
                 }
+            }
+        }
+    }
+}
+
+@Composable
+private fun CompactBudgetInput(
+    budgetInput: String,
+    onBudgetChange: (String) -> Unit,
+    onClear: () -> Unit,
+    modifier: Modifier = Modifier
+) {
+    val isActive = budgetInput.isNotEmpty()
+    val borderColor = if (isActive) {
+        MaterialTheme.colorScheme.primary
+    } else {
+        MaterialTheme.colorScheme.outlineVariant
+    }
+
+    Row(
+        modifier = modifier
+            .height(36.dp)
+            .width(108.dp)
+            .clip(RoundedCornerShape(10.dp))
+            .background(MaterialTheme.colorScheme.surfaceContainerLow)
+            .border(1.dp, borderColor, RoundedCornerShape(10.dp))
+            .padding(horizontal = 8.dp),
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        Text(
+            text = "₹",
+            style = MaterialTheme.typography.labelLarge,
+            fontWeight = FontWeight.Bold,
+            color = MaterialTheme.colorScheme.primary
+        )
+
+        Spacer(modifier = Modifier.width(4.dp))
+
+        Box(
+            modifier = Modifier.weight(1f),
+            contentAlignment = Alignment.CenterStart
+        ) {
+            if (budgetInput.isEmpty()) {
+                Text(
+                    text = "Budget",
+                    style = MaterialTheme.typography.labelMedium,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                )
+            }
+            BasicTextField(
+                value = budgetInput,
+                onValueChange = onBudgetChange,
+                singleLine = true,
+                textStyle = MaterialTheme.typography.labelLarge.copy(
+                    color = MaterialTheme.colorScheme.onSurface,
+                    fontWeight = FontWeight.SemiBold
+                ),
+                cursorBrush = SolidColor(MaterialTheme.colorScheme.primary),
+                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+                modifier = Modifier.fillMaxWidth()
+            )
+        }
+
+        if (isActive) {
+            Spacer(modifier = Modifier.width(4.dp))
+            Box(
+                modifier = Modifier
+                    .size(18.dp)
+                    .clip(CircleShape)
+                    .background(MaterialTheme.colorScheme.secondaryContainer)
+                    .clickable(onClick = onClear),
+                contentAlignment = Alignment.Center
+            ) {
+                Icon(
+                    imageVector = Icons.Rounded.Close,
+                    contentDescription = "Clear budget",
+                    modifier = Modifier.size(12.dp),
+                    tint = MaterialTheme.colorScheme.onSecondaryContainer
+                )
             }
         }
     }
